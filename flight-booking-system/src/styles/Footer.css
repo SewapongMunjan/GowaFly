@@ -1,0 +1,90 @@
+.site-footer {
+  background-color: var(--dark);
+  color: #fff;
+  margin-top: 2rem;
+}
+
+.footer-top {
+  background-color: var(--dark);
+}
+
+.footer-bottom {
+  background-color: #232236;
+}
+
+.footer-col h5 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--secondary);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: background-color 0.3s;
+}
+
+.social-icon:hover {
+  background-color: var(--secondary);
+  color: var(--dark);
+}
+
+.payment-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  background-color: #fff;
+  color: var(--dark);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.app-link {
+  color: #ddd;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.app-link:hover {
+  color: var(--secondary);
+}

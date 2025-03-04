@@ -1,0 +1,14 @@
+.search-card {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(47, 46, 65, 0.1);
+}
+
+.search-card .nav-tabs .nav-link {
+  color: var(--gray);
+  font-weight: 500;
+}
+
+.search-card .nav-tabs .nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}

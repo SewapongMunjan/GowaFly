@@ -1,0 +1,88 @@
+.hero-section {
+  background: linear-gradient(to right, var(--primary), var(--primary-dark));
+  padding: 3rem 0;
+  color: white;
+}
+
+.search-card {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(47, 46, 65, 0.1);
+}
+
+.service-card {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(47, 46, 65, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.promotion-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(47, 46, 65, 0.05);
+  transition: transform 0.3s;
+}
+
+.promotion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+}
+
+.promotion-image {
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+}
+
+.promotion-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.promotion-validity {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+
+.destination-card {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(47, 46, 65, 0.05);
+  transition: transform 0.3s;
+}
+
+.destination-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(108, 99, 255, 0.2);
+}
+
+.destination-image {
+  height: 220px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.destination-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  color: white;
+}

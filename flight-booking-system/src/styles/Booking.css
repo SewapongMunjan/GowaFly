@@ -1,0 +1,90 @@
+.booking-title {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.passenger-count-group {
+  margin-bottom: 0;
+}
+
+.passenger-title {
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.additional-services {
+  margin-top: 1rem;
+}
+
+.flight-summary {
+  padding: 0.5rem;
+  background-color: var(--light);
+  border-radius: 5px;
+}
+
+.airline-logo-small {
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.flight-route {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.flight-details-small {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.booking-summary-card {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(47, 46, 65, 0.05);
+  top: 2rem;
+}
+
+.flight-summary-small {
+  padding: 0.75rem;
+  background-color: var(--light);
+  border-radius: 5px;
+}
+
+.flight-route-small {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.passenger-count-small {
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+}
+
+.price-summary {
+  margin-top: 1rem;
+}
+
+.price-item {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.total-price {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--gray-light);
+  font-weight: 600;
+}
+
+.total-amount {
+  font-size: 1.5rem;
+  color: var(--secondary);
+}

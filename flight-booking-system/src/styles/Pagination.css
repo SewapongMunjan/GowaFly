@@ -1,0 +1,28 @@
+.custom-pagination {
+  margin: 20px 0;
+}
+
+.pagination .page-link {
+  color: var(--primary);
+  border-color: var(--gray-light);
+  background-color: #fff;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.pagination .page-link:hover {
+  background-color: var(--light);
+  color: var(--primary);
+  border-color: var(--gray-light);
+}
+
+.pagination .page-item.disabled .page-link {
+  color: var(--gray);
+  pointer-events: none;
+  background-color: #fff;
+  border-color: var(--gray-light);
+}

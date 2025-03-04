@@ -1,0 +1,60 @@
+.confirmation-header {
+  margin-bottom: 2rem;
+}
+
+.confirmation-icon {
+  font-size: 5rem;
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.confirmation-title {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.confirmation-message {
+  color: var(--gray);
+}
+
+.booking-reference {
+  font-size: 1rem;
+}
+
+.route-airports {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.route-arrow {
+  margin: 0 1rem;
+  color: var(--primary);
+}
+
+.route-cities {
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+.terminal-info {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.passenger-table th, .payment-table th {
+  background-color: var(--light);
+}
+
+.payment-status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.payment-status.success {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: var(--success);
+}

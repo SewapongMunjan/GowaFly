@@ -1,0 +1,73 @@
+.manage-booking-title {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.search-inputs {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.booking-item {
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(47, 46, 65, 0.05);
+}
+
+.booking-code, .booking-status, .booking-passengers {
+  font-size: 0.9rem;
+}
+
+.label {
+  color: var(--gray);
+  margin-right: 0.5rem;
+}
+
+.airline-logo-mini {
+  width: 30px;
+  height: 30px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge.confirmed {
+  background-color: rgba(76, 175, 80, 0.2);
+  color: var(--success);
+}
+
+.status-badge.cancelled {
+  background-color: rgba(244, 67, 54, 0.2);
+  color: var(--danger);
+}
+
+.status-badge.pending {
+  background-color: rgba(255, 202, 40, 0.2);
+  color: var(--warning);
+}
+
+.status-badge.completed {
+  background-color: rgba(3, 169, 244, 0.2);
+  color: var(--info);
+}
+
+.login-prompt {
+  padding: 2rem;
+}
+
+.login-icon {
+  font-size: 5rem;
+  color: var(--primary);
+}

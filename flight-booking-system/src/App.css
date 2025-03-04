@@ -1,0 +1,41 @@
+/* Modern Color Variables */
+:root {
+  /* Primary Colors */
+  --primary: #2F2E41;         /* Modern purple replaces blue */
+  --primary-dark: #4F4F4F;    /* Darker purple */
+  --primary-light: #dfdef0;   /* Lighter purple */
+  
+  /* Secondary Colors */
+  --secondary: #FF6584;       /* Coral pink as accent color */
+  --secondary-light: #FFA1B5; /* Lighter coral */
+  
+  /* Neutral Colors */
+  --dark: #2F2E41;            /* Dark slate for text */
+  --gray-dark: #4F4F4F;       /* Dark gray */
+  --gray: #9E9E9E;            /* Medium gray */
+  --gray-light: #E0E0E0;      /* Light gray */
+  --light: #F8F9FA;           /* Off-white background */
+  
+  /* Status Colors */
+  --success: #4CAF50;         /* Green */
+  --warning: #FFCA28;         /* Amber */
+  --danger: #F44336;          /* Red */
+  --info: #03A9F4;            /* Light blue */
+}
+
+body {
+  font-family: 'Sarabun', sans-serif;
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+.main-content {
+  min-height: calc(100vh - 210px);
+}
+
+.section-title {
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
