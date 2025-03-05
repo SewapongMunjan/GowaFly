@@ -1,12 +1,14 @@
 // server.js
 const express = require('express');
-const cors = require('cors'); // Only import cors ONCE here
+const cors = require('cors');
 const { PrismaClient } = require('@prisma/client');
 const authRoutes = require('./routes/authRoutes');
 const flightRoutes = require('./routes/flightRoutes');
 const bookingRoutes = require('./routes/bookingRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const userRoutes = require('./routes/userRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const errorHandler = require('./middleware/errorHandler');
 
 require('dotenv').config();
 
@@ -25,7 +27,7 @@ const corsOptions = {
 };
 
 // Middleware
-app.use(cors(corsOptions)); // Use cors with options here
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // Routes
@@ -34,12 +36,10 @@ app.use('/api/flights', flightRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/payments', paymentRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/admin', adminRoutes); // Add admin routes
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: 'Something went wrong!' });
-});
+app.use(errorHandler);
 
 // Start server
 app.listen(PORT, () => {
@@ -49,5 +49,6 @@ app.listen(PORT, () => {
 // Handle shutdown gracefully
 process.on('SIGINT', async () => {
   await prisma.$disconnect();
+  console.log('Database connection closed');
   process.exit(0);
 });

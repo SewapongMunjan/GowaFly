@@ -1,4 +1,4 @@
-// In your src/App.js file
+// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
@@ -18,55 +18,169 @@ import UserProfile from './pages/UserProfile';
 import ManageBooking from './pages/ManageBooking';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import PromotionsPage from './pages/PromotionsPage'; // Add this import
-import HelpPage from './pages/HelpPage'; // Add this import
+import PromotionsPage from './pages/PromotionsPage';
+import HelpPage from './pages/HelpPage';
 import ProtectedRoute from './components/ProtectedRoute';
+
+// Import admin components
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminUsers from './pages/admin/AdminUsers';
+import AdminFlights from './pages/admin/AdminFlights';
+import AdminBookings from './pages/admin/AdminBookings';
+import AdminAirports from './pages/admin/AdminAirports';
+import AdminLayout from './components/admin/AdminLayout';
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div className="app">
-          <Header />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/search" element={<SearchResults />} />
-              <Route path="/flight/:id" element={<FlightDetails />} />
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/promotions" element={<PromotionsPage />} /> {/* Add this route */}
-              <Route path="/help" element={<HelpPage />} /> {/* Add this route */}
-              
-              {/* Protected routes - require authentication */}
-              <Route path="/booking/:flightId" element={
-                <ProtectedRoute>
-                  <Booking />
-                </ProtectedRoute>
-              } />
-              <Route path="/payment/:bookingId" element={
-                <ProtectedRoute>
-                  <Payment />
-                </ProtectedRoute>
-              } />
-              <Route path="/confirmation/:bookingId" element={
-                <ProtectedRoute>
-                  <Confirmation />
-                </ProtectedRoute>
-              } />
-              <Route path="/profile" element={
-                <ProtectedRoute>
-                  <UserProfile />
-                </ProtectedRoute>
-              } />
-              <Route path="/manage-booking" element={
-                <ProtectedRoute>
-                  <ManageBooking />
-                </ProtectedRoute>
-              } />
-            </Routes>
-          </main>
-          <Footer />
+          <Routes>
+            {/* Admin Routes with AdminLayout */}
+            <Route path="/admin" element={
+              <ProtectedRoute admin={true}>
+                <AdminLayout />
+              </ProtectedRoute>
+            }>
+              <Route index element={<AdminDashboard />} />
+              <Route path="users" element={<AdminUsers />} />
+              <Route path="flights" element={<AdminFlights />} />
+              <Route path="bookings" element={<AdminBookings />} />
+              <Route path="airports" element={<AdminAirports />} />
+            </Route>
+            
+            {/* Public Routes with Header and Footer */}
+            <Route path="/" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <HomePage />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            <Route path="/search" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <SearchResults />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            <Route path="/flight/:id" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <FlightDetails />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            <Route path="/login" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <LoginPage />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            <Route path="/register" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <RegisterPage />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            <Route path="/promotions" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <PromotionsPage />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            <Route path="/help" element={
+              <>
+                <Header />
+                <main className="main-content">
+                  <HelpPage />
+                </main>
+                <Footer />
+              </>
+            } />
+            
+            {/* Protected Routes with Header and Footer */}
+            <Route path="/booking/:flightId" element={
+              <ProtectedRoute>
+                <>
+                  <Header />
+                  <main className="main-content">
+                    <Booking />
+                  </main>
+                  <Footer />
+                </>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/payment/:bookingId" element={
+              <ProtectedRoute>
+                <>
+                  <Header />
+                  <main className="main-content">
+                    <Payment />
+                  </main>
+                  <Footer />
+                </>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/confirmation/:bookingId" element={
+              <ProtectedRoute>
+                <>
+                  <Header />
+                  <main className="main-content">
+                    <Confirmation />
+                  </main>
+                  <Footer />
+                </>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/profile" element={
+              <ProtectedRoute>
+                <>
+                  <Header />
+                  <main className="main-content">
+                    <UserProfile />
+                  </main>
+                  <Footer />
+                </>
+              </ProtectedRoute>
+            } />
+            
+            <Route path="/manage-booking" element={
+              <ProtectedRoute>
+                <>
+                  <Header />
+                  <main className="main-content">
+                    <ManageBooking />
+                  </main>
+                  <Footer />
+                </>
+              </ProtectedRoute>
+            } />
+          </Routes>
         </div>
       </Router>
     </AuthProvider>

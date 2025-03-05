@@ -1,7 +1,7 @@
 // src/services/api.js
 import axios from 'axios';
 
-// Base API configuration
+// Base API configuration 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 // Create axios instance
@@ -30,6 +30,8 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.error('API Error:', error.response || error);
+    
     // Handle 401 Unauthorized errors (token expired)
     if (error.response && error.response.status === 401) {
       localStorage.removeItem('token');
@@ -74,6 +76,27 @@ export const userService = {
   getUserProfile: () => api.get('/users/profile'),
   updateUserProfile: (userData) => api.put('/users/profile', userData),
   changePassword: (passwordData) => api.put('/users/change-password', passwordData),
+};
+
+// Admin service
+export const adminService = {
+  // Users management
+  getAllUsers: () => api.get('/admin/users'),
+  getUserById: (id) => api.get(`/admin/users/${id}`),
+  updateUser: (id, userData) => api.put(`/admin/users/${id}`, userData),
+  deleteUser: (id) => api.delete(`/admin/users/${id}`),
+  
+  // Flights management
+  createFlight: (flightData) => api.post('/admin/flights', flightData),
+  updateFlight: (id, flightData) => api.put(`/admin/flights/${id}`, flightData),
+  deleteFlight: (id) => api.delete(`/admin/flights/${id}`),
+  
+  // Bookings management
+  getAllBookings: () => api.get('/admin/bookings'),
+  updateBookingStatus: (id, status) => api.put(`/admin/bookings/${id}/status`, { status }),
+  
+  // Dashboard statistics
+  getDashboardStats: () => api.get('/admin/dashboard'),
 };
 
 export default api;

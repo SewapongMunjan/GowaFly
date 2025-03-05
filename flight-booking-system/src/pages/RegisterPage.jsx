@@ -15,15 +15,22 @@ const RegisterPage = () => {
   });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+  const [apiError, setApiError] = useState(null);
   const { register, error } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    
     // Clear field error when user types
     if (errors[name]) {
       setErrors({ ...errors, [name]: '' });
+    }
+    
+    // Clear API error when user makes changes
+    if (apiError) {
+      setApiError(null);
     }
   };
 
@@ -69,15 +76,21 @@ const RegisterPage = () => {
     
     try {
       setSubmitting(true);
+      setApiError(null);
+      
+      // Map the frontend field names to backend expected format
       await register({
         full_name: formData.fullName,
         email: formData.email,
         phone: formData.phone,
         password: formData.password
       });
+      
+      // If successful, navigate to home or login
       navigate('/');
     } catch (err) {
       console.error('Registration error:', err);
+      setApiError(err.response?.data?.message || 'การสมัครสมาชิกล้มเหลว โปรดลองอีกครั้งภายหลัง');
     } finally {
       setSubmitting(false);
     }
@@ -91,9 +104,9 @@ const RegisterPage = () => {
             <Card.Body className="p-4">
               <h2 className="text-center mb-4">สมัครสมาชิก</h2>
               
-              {error && (
+              {(error || apiError) && (
                 <Alert variant="danger">
-                  {error}
+                  {error || apiError}
                 </Alert>
               )}
               

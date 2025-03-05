@@ -3,7 +3,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = ({ children, admin = false }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -18,9 +18,15 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
+  // Redirect to login if not authenticated
   if (!user) {
-    // Redirect to login if not authenticated
     return <Navigate to="/login" replace />;
+  }
+
+  // For admin routes, check if user is admin
+  if (admin && !user.isAdmin) {
+    // Redirect non-admin users to home page
+    return <Navigate to="/" replace />;
   }
 
   return children;
