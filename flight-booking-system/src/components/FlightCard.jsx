@@ -1,8 +1,42 @@
+// src/components/FlightCard.jsx
 import React from 'react';
 import { Card, Row, Col, Button } from 'react-bootstrap';
 import '../styles/FlightCard.css';
 
 const FlightCard = ({ flight, onSelect }) => {
+  // Format date and time for display
+  const formatTime = (dateTimeString) => {
+    if (!dateTimeString) return '';
+    
+    try {
+      const date = new Date(dateTimeString);
+      return date.toLocaleTimeString('th-TH', {
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch (error) {
+      console.error('Error formatting time:', error);
+      return dateTimeString;
+    }
+  };
+
+  // Format date for display
+  const formatDate = (dateTimeString) => {
+    if (!dateTimeString) return '';
+    
+    try {
+      const date = new Date(dateTimeString);
+      return date.toLocaleDateString('th-TH', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+      });
+    } catch (error) {
+      console.error('Error formatting date:', error);
+      return dateTimeString;
+    }
+  };
+
   return (
     <Card className="mb-3 flight-card">
       <Card.Body>
@@ -17,7 +51,7 @@ const FlightCard = ({ flight, onSelect }) => {
             <div className="flight-info">
               <div className="d-flex justify-content-between mb-2">
                 <div className="flight-time">
-                  <div className="departure-time">{flight.departureTime}</div>
+                  <div className="departure-time">{formatTime(flight.departureTime)}</div>
                   <div className="airport-code">{flight.from}</div>
                 </div>
                 <div className="flight-duration text-center">
@@ -31,13 +65,13 @@ const FlightCard = ({ flight, onSelect }) => {
                   <div className="duration-time">{flight.duration}</div>
                 </div>
                 <div className="flight-time text-end">
-                  <div className="arrival-time">{flight.arrivalTime}</div>
+                  <div className="arrival-time">{formatTime(flight.arrivalTime)}</div>
                   <div className="airport-code">{flight.to}</div>
                 </div>
               </div>
               <div className="flight-details">
-                <span className="flight-number">เที่ยวบิน {flight.id}</span>
-                <span className="aircraft-type">• Boeing 737-800</span>
+                <span className="flight-number">เที่ยวบิน {flight.flightNumber}</span>
+                <span className="flight-date">• {formatDate(flight.departureTime)}</span>
                 <span className="baggage-info">• รวมกระเป๋า 20 กก.</span>
               </div>
             </div>

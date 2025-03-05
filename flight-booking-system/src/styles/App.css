@@ -39,3 +39,9 @@ body {
   text-align: center;
   font-weight: 600;
 }
+
+/* Admin nav link styles */
+.navbar .nav-link i.fa-user-shield {
+  color: var(--secondary);
+  margin-right: 0.5rem;
+}

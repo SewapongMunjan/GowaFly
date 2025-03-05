@@ -1,5 +1,6 @@
 // src/services/api.js
 import axios from 'axios';
+import { aviationStackService } from './aviationstackService';
 
 // Base API configuration 
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
@@ -50,12 +51,8 @@ export const authService = {
   getCurrentUser: () => api.get('/auth/me'),
 };
 
-// Flight service
-export const flightService = {
-  getAllFlights: () => api.get('/flights'),
-  searchFlights: (params) => api.get('/flights/search', { params }),
-  getFlightById: (id) => api.get(`/flights/${id}`),
-};
+// Flight service - Using Aviation Stack API
+export const flightService = aviationStackService;
 
 // Booking service
 export const bookingService = {
@@ -80,23 +77,34 @@ export const userService = {
 
 // Admin service
 export const adminService = {
+  // Dashboard statistics
+  getDashboardStats: () => api.get('/admin/dashboard'),
+  
   // Users management
   getAllUsers: () => api.get('/admin/users'),
   getUserById: (id) => api.get(`/admin/users/${id}`),
+  createUser: (userData) => api.post('/admin/users', userData),
   updateUser: (id, userData) => api.put(`/admin/users/${id}`, userData),
   deleteUser: (id) => api.delete(`/admin/users/${id}`),
   
-  // Flights management
+  // Flights management - Using Aviation Stack API for read operations
+  getAllFlights: () => aviationStackService.getAllFlights(),
+  getFlightById: (id) => aviationStackService.getFlightById(id),
+  // For admin operations that modify flights, we'll still use the backend API
   createFlight: (flightData) => api.post('/admin/flights', flightData),
   updateFlight: (id, flightData) => api.put(`/admin/flights/${id}`, flightData),
   deleteFlight: (id) => api.delete(`/admin/flights/${id}`),
   
+  // Airports management
+  getAllAirports: () => api.get('/admin/airports'),
+  createAirport: (airportData) => api.post('/admin/airports', airportData),
+  updateAirport: (id, airportData) => api.put(`/admin/airports/${id}`, airportData),
+  deleteAirport: (id) => api.delete(`/admin/airports/${id}`),
+  
   // Bookings management
   getAllBookings: () => api.get('/admin/bookings'),
+  getBookingById: (id) => api.get(`/admin/bookings/${id}`),
   updateBookingStatus: (id, status) => api.put(`/admin/bookings/${id}/status`, { status }),
-  
-  // Dashboard statistics
-  getDashboardStats: () => api.get('/admin/dashboard'),
 };
 
 export default api;

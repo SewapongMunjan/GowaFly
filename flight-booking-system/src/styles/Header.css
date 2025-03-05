@@ -2,6 +2,10 @@
   box-shadow: 0 2px 10px rgba(47, 46, 65, 0.1);
 }
 
+.navbar-dark.bg-midnight-blue {
+  background-color: #1A2B3C !important; /* Midnight blue */
+}
+
 .brand-text {
   font-size: 1.5rem;
   font-weight: 700;
